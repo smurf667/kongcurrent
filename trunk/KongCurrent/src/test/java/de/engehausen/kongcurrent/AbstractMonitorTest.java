@@ -3,23 +3,17 @@ package de.engehausen.kongcurrent;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+
 import de.engehausen.kongcurrent.testhelper.Recorder;
 
-public abstract class AbstractMonitorTest extends TestCase {
+public abstract class AbstractMonitorTest {
 
 	protected Recorder logger;
 
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
+	@Before
+	public void setup() throws Exception {
 		logger = new Recorder();
-	}
-
-	@Override
-	protected void tearDown() throws Exception {
-		logger = null;
-		super.tearDown();
 	}
 
 	/**

@@ -1,6 +1,13 @@
 package de.engehausen.kongcurrent.cglib;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.util.ArrayList;
+
+import org.junit.Test;
 
 import de.engehausen.kongcurrent.AbstractMonitorTest;
 import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
@@ -11,7 +18,8 @@ import de.engehausen.kongcurrent.testhelper.cglib.JohnDoe;
 import de.engehausen.kongcurrent.testhelper.cglib.SimpleJaneDoeConstructorInformation;
 
 public class SimpleTest extends AbstractMonitorTest {
-	
+
+	@Test
 	public void testCustomClassNonDefaultCtor() {
 		final JaneDoe original = new JaneDoe(4);
 		final JaneDoe monitored = MonitorCglib.monitor(original, new DescriptionCglib<JaneDoe>(JaneDoe.class, new SimpleJaneDoeConstructorInformation(original)), new DefaultExceptionHandler(logger));
@@ -20,6 +28,7 @@ public class SimpleTest extends AbstractMonitorTest {
 		assertEquals(original.getId(), monitored.getId());
 	}
 	
+	@Test
 	public void testStandardClassDefaultCtor() {
 		final String entry = "entry";
 		final ArrayList<String> original = new ArrayList<String>(1);
@@ -39,6 +48,7 @@ public class SimpleTest extends AbstractMonitorTest {
 		assertTrue(original.isEmpty());
 	}
 	
+	@Test
 	public void testDependant() throws NoSuchMethodException {
 		final JohnDoe john = new JohnDoe();
 		final JaneDoe original = new JaneDoe(4, john);

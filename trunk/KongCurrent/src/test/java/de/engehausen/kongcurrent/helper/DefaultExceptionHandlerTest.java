@@ -1,5 +1,7 @@
 package de.engehausen.kongcurrent.helper;
 
+import static org.junit.Assert.assertTrue;
+
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
