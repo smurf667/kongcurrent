@@ -1,6 +1,10 @@
 package de.engehausen.kongcurrent;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
+
+import org.junit.Test;
 
 import de.engehausen.kongcurrent.helper.DefaultDescriptions;
 import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
@@ -11,6 +15,7 @@ public class ComplexTest extends AbstractMonitorTest {
 	 * Tests handling an exception occurring under concurrent load.
 	 * @throws Exception in case of error
 	 */
+	@Test
 	public void testHandling() throws Exception {
 		final Description<List<String>> desc = DefaultDescriptions.<String>listDescription();
 
