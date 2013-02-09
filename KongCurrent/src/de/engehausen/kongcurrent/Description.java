@@ -20,7 +20,7 @@ import de.engehausen.kongcurrent.helper.DefaultComparators;
 public class Description<T> {
 
 	@SuppressWarnings("unchecked")
-	private static final Map<Method, Description> EMPTY = Collections.emptyMap();
+	protected static final Map<Method, Description> EMPTY = Collections.emptyMap();
 	
 	protected final Class<?> proxyInterface;
 	protected final Comparator<T> comparator;
@@ -91,13 +91,16 @@ public class Description<T> {
 	 * @throws NoSuchMethodException if a matching method is not found
 	 * @param <E> the type the description stands for
 	 */
-	@SuppressWarnings("unchecked")
 	public <E> void addDependant(final Description<E> description, final String methodName, final Class<?>... parameterTypes) throws SecurityException, NoSuchMethodException {
-		final Method method = proxyInterface.getDeclaredMethod(methodName, parameterTypes);
+		addDependant(proxyInterface.getDeclaredMethod(methodName, parameterTypes), description);
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected <E> void addDependant(final Method method, final Description<E> description) {
 		if (dependants == EMPTY) {
 			dependants = new HashMap<Method, Description>();
 		}
-		dependants.put(method, description);			
+		dependants.put(method, description);
 	}
 
 	/**

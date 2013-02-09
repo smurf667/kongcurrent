@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.engehausen.kongcurrent.cglib.DescriptionCglib;
+import de.engehausen.kongcurrent.cglib.MonitorCglib;
 import de.engehausen.kongcurrent.helper.DefaultComparators;
 import de.engehausen.kongcurrent.helper.DefaultDescriptions;
 import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
@@ -161,8 +163,11 @@ public class Monitor {
 					handler.postInvoke(target, method, args);
 				}
 				final Description<?> desc = description.getDescription(method);
-				if (desc != null) {
-					result = monitorGeneric(result, desc, handler);
+				if (desc instanceof DescriptionCglib<?>) {
+					// TODO runtime dependency to cglib??? will it fail without cglib?
+					result = MonitorCglib.monitor(result, (DescriptionCglib) description, handler);
+				} else if (desc != null) {
+					result = monitorGeneric(result, desc, handler);					
 				}
 			} else {
 				// one of mine
