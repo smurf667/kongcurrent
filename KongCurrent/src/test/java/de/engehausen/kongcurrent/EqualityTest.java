@@ -2,7 +2,7 @@ package de.engehausen.kongcurrent;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -69,7 +69,7 @@ public class EqualityTest extends AbstractMonitorTest {
 		
 		fullEqualityRules(o1, o2, o3, o4, p1, p2, p3, p4);
 		
-		assertNotSame(p1.hashCode(), p4.hashCode());
+		assertTrue(p1.hashCode()!= p4.hashCode());
 	}
 	
 	/**
@@ -147,7 +147,7 @@ public class EqualityTest extends AbstractMonitorTest {
 
 	/**
 	 * Adds the given values to the set.
-	 * @param list the list to add to, must not be <code>null</code>.
+	 * @param set the set to add to, must not be <code>null</code>.
 	 * @param values the values to add, must not be <code>null</code>.
 	 */
 	protected void buildSet(final Set<String> set, final String... values) {
