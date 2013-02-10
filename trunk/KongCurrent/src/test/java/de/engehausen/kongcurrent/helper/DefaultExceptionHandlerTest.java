@@ -6,11 +6,14 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.Test;
+
 import de.engehausen.kongcurrent.AbstractMonitorTest;
 
 public class DefaultExceptionHandlerTest extends AbstractMonitorTest {
 
-	public void testInvocation() throws Exception {
+	@Test
+	public void testInvocation() throws NoSuchMethodException {
 		new DefaultExceptionHandler(); // test constructor...
 		
 		final List<String> list = Collections.emptyList();

@@ -82,8 +82,8 @@ import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
  */
 public class Monitor {
 	
-	protected Monitor() {
-		// not to be instantiated w/o good reason
+	private Monitor() {
+		// not to be instantiated
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class Monitor {
 
 	/**
 	 * The invocation handler.
-	 * @param <T>
+	 * @param <T> the type the handler handles
 	 */
 	private static class MonitorHandler<T> implements InvocationHandler {
 
@@ -202,6 +202,10 @@ public class Monitor {
 			return target.hashCode();
 		}
 
+		public boolean equals(final Object other) {
+			return equals(other, target);
+		}
+		
 		/**
 		 * Extended equals method which provides the correct "this" in form of
 		 * the invocation target.
@@ -209,11 +213,10 @@ public class Monitor {
 		 * @param invocationTarget the proxy around the handler, never <code>null</code>
 		 * @return <code>true</code> if the invocationTarget equals the <code>other</code> object, <code>false</code> otherwise.
 		 */
-		@SuppressWarnings("unused") // called via reflection from invoke()
 		public boolean equals(final Object other, final Object invocationTarget) { 
 			if (other == null) {
 				return false;
-			} else if (other == this || other == invocationTarget) {
+			} else if (other == this || other == invocationTarget) { //NOPMD shortcut comparisons...
 				return true;
 			} else {
 				final Class<?> clz = description.getInterface();

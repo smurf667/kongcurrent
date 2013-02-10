@@ -14,8 +14,8 @@ import de.engehausen.kongcurrent.Monitor;
  */
 public class MonitorCglib {
 	
-	protected MonitorCglib() {
-		// not to be instantiated w/o good reason
+	private MonitorCglib() {
+		// not to be instantiated
 	}
 
 	/**
@@ -95,11 +95,7 @@ public class MonitorCglib {
 			sb.append("{monitored:").append(contents).append('}');
 			return sb.toString();
 		}
-		
-		public int hashCode() {
-			return target.hashCode();
-		}
-		
+
 	}
 		
 }

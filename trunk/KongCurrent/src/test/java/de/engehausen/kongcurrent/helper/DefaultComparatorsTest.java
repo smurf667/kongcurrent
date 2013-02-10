@@ -1,5 +1,8 @@
 package de.engehausen.kongcurrent.helper;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,11 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import junit.framework.TestCase;
+import org.junit.Test;
+
 import de.engehausen.kongcurrent.Comparator;
 
-public class DefaultComparatorsTest extends TestCase {
+public class DefaultComparatorsTest {
 
+	@Test
 	public void testObjectComparator() throws Exception {
 		final Comparator<Object> comp = DefaultComparators.<Object>objectComparator();
 		final Object one = new Object();
@@ -22,6 +27,7 @@ public class DefaultComparatorsTest extends TestCase {
 		assertFalse(comp.equals(two, one));
 	}
 	
+	@Test
 	public void testListComparator() throws Exception {
 		final Comparator<List<Integer>> comp = DefaultComparators.<Integer>listComparator();
 		final List<Integer> list1 = Arrays.asList(Integer.valueOf(1), Integer.valueOf(2));
@@ -37,6 +43,7 @@ public class DefaultComparatorsTest extends TestCase {
 		assertFalse(comp.equals(list4, list1));
 	}
 
+	@Test
 	public void testSetComparator() throws Exception {
 		final Comparator<Set<Integer>> comp = DefaultComparators.<Integer>setComparator();
 		final Set<Integer> list1 = new HashSet<Integer>(Arrays.asList(Integer.valueOf(1), Integer.valueOf(2)));
@@ -52,6 +59,7 @@ public class DefaultComparatorsTest extends TestCase {
 		assertFalse(comp.equals(list4, list1));
 	}
 	
+	@Test
 	public void testMapComparator() throws Exception {
 		final Comparator<Map<Integer, Integer>> comp = DefaultComparators.<Integer, Integer>mapComparator();
 		final Map<Integer, Integer> map1 = createIntMap(0, 2, 4);

@@ -21,19 +21,21 @@ import de.engehausen.kongcurrent.Comparator;
  * </ul>
  * Custom comparators can be used by implementing {@link Comparator}.
  */
-public class DefaultComparators {
-	
-	@SuppressWarnings("unchecked")
-	private static Comparator objectComparatorInst;
-	@SuppressWarnings("unchecked")
-	private static Comparator listComparatorInst;
-	@SuppressWarnings("unchecked")
-	private static Comparator setComparatorInst;
-	@SuppressWarnings("unchecked")
-	private static Comparator mapComparatorInst;
+public final class DefaultComparators {
 
-	protected DefaultComparators() {
-		// not to be instantiated w/o good reason
+	private static final String UNCHECKED = "unchecked";
+
+	@SuppressWarnings(UNCHECKED)
+	private static final Comparator objectComparatorInst = new ObjectComparator();
+	@SuppressWarnings(UNCHECKED)
+	private static final Comparator listComparatorInst = new ListComparator();
+	@SuppressWarnings(UNCHECKED)
+	private static final Comparator setComparatorInst = new SetComparator();
+	@SuppressWarnings(UNCHECKED)
+	private static final Comparator mapComparatorInst = new MapComparator();
+
+	private DefaultComparators() {
+		// not to be instantiated
 	}
 	
 	/**
@@ -42,11 +44,8 @@ public class DefaultComparators {
 	 * @param <E> the type the comparator will use
 	 * @return a comparator instance, never <code>null</code>
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public static <E> Comparator<E> objectComparator() {
-		if (objectComparatorInst == null) {
-			objectComparatorInst = new ObjectComparator();
-		}
 		return (Comparator<E>) objectComparatorInst;
 	}
 
@@ -56,11 +55,8 @@ public class DefaultComparators {
 	 * @param <E> the type the comparator will use
 	 * @return a comparator instance, never <code>null</code>
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public static <E> Comparator<List<E>> listComparator() {
-		if (listComparatorInst == null) {
-			listComparatorInst = new ListComparator();
-		}
 		return (Comparator<List<E>>) listComparatorInst;
 	}
 
@@ -70,11 +66,8 @@ public class DefaultComparators {
 	 * @param <E> the type the comparator will use
 	 * @return a comparator instance, never <code>null</code>
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public static <E> Comparator<Set<E>> setComparator() {
-		if (setComparatorInst == null) {
-			setComparatorInst = new SetComparator();
-		}
 		return (Comparator<Set<E>>) setComparatorInst;
 	}
 
@@ -85,18 +78,15 @@ public class DefaultComparators {
 	 * @param <V> the type the comparator will use for map values
 	 * @return a comparator instance, never <code>null</code>
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public static <K, V> Comparator<Map<K, V>> mapComparator() {
-		if (mapComparatorInst == null) {
-			mapComparatorInst = new MapComparator();
-		}
 		return (Comparator<Map<K, V>>) mapComparatorInst;
 	}
 
 	private static class ObjectComparator implements Comparator<Object> {
 		@Override
 		public boolean equals(final Object one, final Object two) {
-			return one==two;
+			return one==two; //NOPMD this must be the comparison implementation
 		}
 	}
 	
