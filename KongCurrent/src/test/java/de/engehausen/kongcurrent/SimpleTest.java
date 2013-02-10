@@ -16,6 +16,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Test;
+
 import de.engehausen.kongcurrent.helper.DefaultDescriptions;
 import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
 
@@ -25,6 +27,7 @@ public class SimpleTest extends AbstractMonitorTest {
 	 * Test proxying a collection.
 	 * @throws Exception in case of error
 	 */
+	@Test
 	public void testProxying1() throws Exception {
 		final Collection<String> collection = new ArrayList<String>(1);
 		final String helloWorld = "hello world";
@@ -49,6 +52,7 @@ public class SimpleTest extends AbstractMonitorTest {
 		assertEquals(collection.size(), monitored.size());		
 	}
 	
+	@Test
 	public void testProxying2() throws Exception {
 		final Description<List<String>> desc = DefaultDescriptions.<String>listDescription();
 
@@ -104,6 +108,7 @@ public class SimpleTest extends AbstractMonitorTest {
 		}
 	}
 	
+	@Test
 	public void testProxying3() throws Exception {
 		final Description<Set<Integer>> desc = DefaultDescriptions.<Integer>setDescription();
 		final Set<Integer> original = new HashSet<Integer>();
@@ -125,6 +130,7 @@ public class SimpleTest extends AbstractMonitorTest {
 	 * Tests performance with no contention taking place.
 	 * @throws Exception in case of error
 	 */
+	@Test
 	public void testPerformance() throws Exception {
 		final Description<List<String>> desc = DefaultDescriptions.<String>listDescription();
 

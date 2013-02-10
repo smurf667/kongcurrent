@@ -18,13 +18,15 @@ import de.engehausen.kongcurrent.helper.DefaultComparators;
  * @param <T> the type of interface the description describes
  */
 public class Description<T> {
+	
+	private static final String UNCHECKED = "unchecked";
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	protected static final Map<Method, Description> EMPTY = Collections.emptyMap();
 	
 	protected final Class<?> proxyInterface;
 	protected final Comparator<T> comparator;
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	protected Map<Method, Description> dependants;
 
 	/**
@@ -73,7 +75,7 @@ public class Description<T> {
 	 * @param <E> the type the description stands for
 	 * @return a description how to proxy the result, or <code>null</code> if no proxying is required.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public <E> Description<E> getDescription(final Method method) {
 		return dependants.get(method);
 	}
@@ -95,9 +97,9 @@ public class Description<T> {
 		addDependant(proxyInterface.getDeclaredMethod(methodName, parameterTypes), description);
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	protected <E> void addDependant(final Method method, final Description<E> description) {
-		if (dependants == EMPTY) {
+		if (dependants == EMPTY) { //NOPMD this is an intended comparison style here
 			dependants = new HashMap<Method, Description>();
 		}
 		dependants.put(method, description);

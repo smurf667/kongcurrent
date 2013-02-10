@@ -1,5 +1,7 @@
 package de.engehausen.kongcurrent.helper;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashSet;
@@ -9,10 +11,12 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
+
 import de.engehausen.kongcurrent.Description;
 
-public class DefaultDescriptionsTest extends TestCase {
+public class DefaultDescriptionsTest {
 	
 	private static Set<Class<?>> PROXY_CANDIDATES;
 	
@@ -28,28 +32,27 @@ public class DefaultDescriptionsTest extends TestCase {
 	
 	protected Set<Description<?>> alreadyHandled;
 
-	@Override
-	protected void setUp() throws Exception {
+	@Before
+	public void setup() throws Exception {
 		alreadyHandled = new HashSet<Description<?>>();
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-		alreadyHandled = null;
-	}
-
+	@Test
 	public void testCollection() throws Exception {
 		verifyInterfacesCovered(DefaultDescriptions.collectionDescription(), alreadyHandled);
 	}
 
+	@Test
 	public void testList() throws Exception {
 		verifyInterfacesCovered(DefaultDescriptions.listDescription(), alreadyHandled);
 	}
 
+	@Test
 	public void testSet() throws Exception {
 		verifyInterfacesCovered(DefaultDescriptions.setDescription(), alreadyHandled);
 	}
 
+	@Test
 	public void testMap() throws Exception {
 		assertNotNull(DefaultDescriptions.mapDescription()); // cover a specific code path in the default descriptions
 		verifyInterfacesCovered(DefaultDescriptions.mapDescription(), alreadyHandled);

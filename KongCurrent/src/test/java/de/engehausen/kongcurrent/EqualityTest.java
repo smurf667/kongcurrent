@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.junit.Test;
+
 import de.engehausen.kongcurrent.helper.DefaultComparators;
 import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
 import de.engehausen.kongcurrent.testhelper.Demo;
@@ -28,6 +30,7 @@ public class EqualityTest extends AbstractMonitorTest {
 	 * Tests equality rules on a basic demo interface.
 	 * @throws Exception in case of error
 	 */
+	@Test
 	public void testObjectEquality1() throws Exception {
 		final Demo o1 = new DemoImpl(4711);
 		final Demo p1 = Monitor.monitor(o1, new Description<Demo>(Demo.class), new DefaultExceptionHandler(logger));
@@ -56,6 +59,7 @@ public class EqualityTest extends AbstractMonitorTest {
 	 * on equals (int value identical means object is equal).
 	 * @throws Exception in case of error
 	 */
+	@Test
 	public void testObjectEquality2() throws Exception {
 		final Description<Demo2> desc = new Description<Demo2>(Demo2.class, Demo2Impl.COMPARATOR);
 		final Demo2 o1 = new Demo2Impl(4711);
@@ -76,6 +80,7 @@ public class EqualityTest extends AbstractMonitorTest {
 	 * Test of equality rules of {@link List} objects.
 	 * @throws Exception in case of error
 	 */
+	@Test
 	public void testObjectEquality3() throws Exception {
 		final Description<List<String>> desc = new Description<List<String>>(List.class, DefaultComparators.<String>listComparator());
 		final List<String> o1 = buildList(HELLO, WORLD);
@@ -94,6 +99,7 @@ public class EqualityTest extends AbstractMonitorTest {
 	 * Test of equality rules of {@link Set} objects.
 	 * @throws Exception in case of error
 	 */
+	@Test
 	public void testObjectEquality4() throws Exception {
 		final Description<Set<String>> desc = new Description<Set<String>>(Set.class, DefaultComparators.<String>setComparator());
 		final Set<String> o1 = buildSet(HELLO, WORLD);

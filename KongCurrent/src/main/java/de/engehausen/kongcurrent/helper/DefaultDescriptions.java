@@ -25,19 +25,21 @@ import de.engehausen.kongcurrent.Monitor;
  * Custom descriptions can be built by instantiating and setting up new
  * instances of {@link Description}.
  */
-public class DefaultDescriptions {
+public final class DefaultDescriptions {
 	
-	@SuppressWarnings("unchecked")
-	private static Description collectionDescInst;
-	@SuppressWarnings("unchecked")
-	private static Description setDescInst;
-	@SuppressWarnings("unchecked")
-	private static Description listDescInst;
-	@SuppressWarnings("unchecked")
-	private static Description mapDescInst;
+	private static final String UNCHECKED = "unchecked";
 	
-	protected DefaultDescriptions() {
-		// not to be instantiated w/o good reason
+	@SuppressWarnings(UNCHECKED)
+	private static final Description collectionDescInst = buildCollectionDescription();
+	@SuppressWarnings(UNCHECKED)
+	private static final Description setDescInst = buildSetDescription();
+	@SuppressWarnings(UNCHECKED)
+	private static final Description listDescInst = buildListDescription();
+	@SuppressWarnings(UNCHECKED)
+	private static final Description mapDescInst = buildMapDescription();
+	
+	private DefaultDescriptions() {
+		// not to be instantiated
 	}
 	
 	/**
@@ -47,13 +49,9 @@ public class DefaultDescriptions {
 	 * @param <T> the type of objects held in the collection
 	 * @return a description instance, never <code>null</code>
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public static <T> Description<Collection<T>> collectionDescription() {
-		if (collectionDescInst != null) {
-			return collectionDescInst;
-		} else {
-			return collectionDescInst = buildCollectionDescription();
-		}
+		return collectionDescInst;
 	}
 	
 	/**
@@ -63,13 +61,9 @@ public class DefaultDescriptions {
 	 * @param <T> the type of objects held in the set
 	 * @return a description instance, never <code>null</code>
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public static <T> Description<Set<T>> setDescription() {
-		if (setDescInst != null) {
-			return setDescInst;
-		} else {
-			return setDescInst = buildSetDescription();
-		}		
+		return setDescInst;
 	}
 
 	/**
@@ -79,13 +73,9 @@ public class DefaultDescriptions {
 	 * @param <T> the type of objects held in the set
 	 * @return a description instance, never <code>null</code>
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public static <T> Description<List<T>> listDescription() {
-		if (listDescInst != null) {
-			return listDescInst;
-		} else {
-			return listDescInst = buildListDescription();
-		}		
+		return listDescInst;
 	}
 
 	/**
@@ -96,13 +86,9 @@ public class DefaultDescriptions {
 	 * @param <V> the type of values of the map
 	 * @return a description instance, never <code>null</code>
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	public static <K, V> Description<Map<K, V>> mapDescription() {
-		if (mapDescInst != null) {
-			return mapDescInst;
-		} else {
-			return mapDescInst = buildMapDescription();
-		}		
+		return mapDescInst;
 	}
 
 	private static <T> Description<Collection<T>> buildCollectionDescription() {
