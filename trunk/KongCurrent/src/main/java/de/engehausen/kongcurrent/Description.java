@@ -87,9 +87,9 @@ public class Description<T> {
 	 * @param description the description applicable for the return type of the method, must not be <code>null</code>.
 	 * @param methodName the name of the method, must not be <code>null</code>.
 	 * @param parameterTypes the types of arguments to the method, may be <code>null</code>.
+	 * @param <E> the type the description stands for
 	 * @throws SecurityException if a security manager denies access
 	 * @throws NoSuchMethodException if a matching method is not found
-	 * @param <E> the type the description stands for
 	 */
 	public <E> void addDependant(final Description<E> description, final String methodName, final Class<?>... parameterTypes) throws SecurityException, NoSuchMethodException {
 		addDependant(proxyInterface.getDeclaredMethod(methodName, parameterTypes), description);

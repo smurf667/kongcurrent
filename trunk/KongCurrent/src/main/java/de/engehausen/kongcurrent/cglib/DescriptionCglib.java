@@ -1,6 +1,5 @@
 package de.engehausen.kongcurrent.cglib;
 
-import de.engehausen.kongcurrent.Comparator;
 import de.engehausen.kongcurrent.Description;
 import de.engehausen.kongcurrent.Monitor;
 
@@ -25,7 +24,7 @@ public class DescriptionCglib<T> extends Description<T> {
 	 * @param aClass the class to describe, must not be <code>null</code>
 	 */
 	public DescriptionCglib(final Class<?> aClass) {
-		this(aClass, null, null);
+		this(aClass, null);
 	}
 
 	/**
@@ -34,16 +33,7 @@ public class DescriptionCglib<T> extends Description<T> {
 	 * @param aConstructorInfo the constructor information to create proxies; may only be <code>null</code> if a no-arg constructor exists for <code>aClass</code>
 	 */
 	public DescriptionCglib(final Class<?> aClass, final ConstructorInformation aConstructorInfo) {
-		this(aClass, aConstructorInfo, null);
-	}
-
-	/**
-	 * Creates a description for the given class. 
-	 * @param aClass the class to describe, must not be <code>null</code>
-	 * @param aConstructorInfo the constructor information to create proxies; may only be <code>null</code> if a no-arg constructor exists for <code>aClass</code>
-	 */
-	public DescriptionCglib(final Class<?> aClass, final ConstructorInformation aConstructorInfo, final Comparator<T> aComparator) {
-		super(aClass, aComparator);
+		super(aClass, null);
 		ctorInfo = aConstructorInfo;
 	}
 
@@ -56,9 +46,9 @@ public class DescriptionCglib<T> extends Description<T> {
 	 * @param description the cglib-based description applicable for the return type of the method, must not be <code>null</code>.
 	 * @param methodName the name of the method, must not be <code>null</code>.
 	 * @param parameterTypes the types of arguments to the method, may be <code>null</code>.
+	 * @param <E> the type the description stands for
 	 * @throws SecurityException if a security manager denies access
 	 * @throws NoSuchMethodException if a matching method is not found
-	 * @param <E> the type the description stands for
 	 */
 	public <E> void addDependant(final DescriptionCglib<E> description, final String methodName, final Class<?>... parameterTypes) throws SecurityException, NoSuchMethodException {
 		addDependant(getInterface().getDeclaredMethod(methodName, parameterTypes), description);

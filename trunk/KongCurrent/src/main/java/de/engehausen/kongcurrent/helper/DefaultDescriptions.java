@@ -36,7 +36,8 @@ public class DefaultDescriptions {
 	@SuppressWarnings("unchecked")
 	private static Description mapDescInst;
 	
-	protected DefaultDescriptions() {	
+	protected DefaultDescriptions() {
+		// not to be instantiated w/o good reason
 	}
 	
 	/**

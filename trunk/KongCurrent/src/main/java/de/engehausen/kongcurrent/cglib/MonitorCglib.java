@@ -10,10 +10,12 @@ import de.engehausen.kongcurrent.ExceptionHandler;
 import de.engehausen.kongcurrent.Monitor;
 
 /**
+ * TODO
  */
 public class MonitorCglib {
 	
-	protected MonitorCglib() {		
+	protected MonitorCglib() {
+		// not to be instantiated w/o good reason
 	}
 
 	/**
@@ -96,31 +98,6 @@ public class MonitorCglib {
 		
 		public int hashCode() {
 			return target.hashCode();
-		}
-
-		/**
-		 * Extended equals method which provides the correct "this" in form of
-		 * the invocation target.
-		 * @param other the object to compare against, may be <code>null</code>
-		 * @param invocationTarget the proxy around the handler, never <code>null</code>
-		 * @return
-		 */
-		@SuppressWarnings("unused") // called via reflection from invoke()
-		public boolean equals(final Object other, final Object invocationTarget) { 
-			if (other == null) {
-				return false;
-			} else if (other == this || other == invocationTarget) {
-				return true;
-			} else {
-				final Class<?> clz = description.getInterface();
-				// other must implement the same interface as us
-				if (clz.isAssignableFrom(other.getClass())) {
-					// to compare, custom logic may be required (e.g. collection, list and set)
-					return description.getComparator().equals(invocationTarget, other);					
-				} else {
-					return false;
-				}
-			}
 		}
 		
 	}

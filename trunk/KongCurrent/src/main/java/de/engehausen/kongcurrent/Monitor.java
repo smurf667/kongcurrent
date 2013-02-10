@@ -82,7 +82,8 @@ import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
  */
 public class Monitor {
 	
-	protected Monitor() {		
+	protected Monitor() {
+		// not to be instantiated w/o good reason
 	}
 
 	/**
@@ -206,7 +207,7 @@ public class Monitor {
 		 * the invocation target.
 		 * @param other the object to compare against, may be <code>null</code>
 		 * @param invocationTarget the proxy around the handler, never <code>null</code>
-		 * @return
+		 * @return <code>true</code> if the invocationTarget equals the <code>other</code> object, <code>false</code> otherwise.
 		 */
 		@SuppressWarnings("unused") // called via reflection from invoke()
 		public boolean equals(final Object other, final Object invocationTarget) { 

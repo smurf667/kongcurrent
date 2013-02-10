@@ -32,7 +32,8 @@ public class DefaultComparators {
 	@SuppressWarnings("unchecked")
 	private static Comparator mapComparatorInst;
 
-	protected DefaultComparators() {		
+	protected DefaultComparators() {
+		// not to be instantiated w/o good reason
 	}
 	
 	/**
