@@ -82,6 +82,9 @@ import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
  */
 public class Monitor {
 	
+	private static final boolean cglibAvailable = 
+		Monitor.class.getResource("/net/sf/cglib/proxy/Callback.class") != null;
+	
 	private Monitor() {
 		// not to be instantiated
 	}
@@ -165,8 +168,11 @@ public class Monitor {
 				}
 				final Description<?> desc = description.getDescription(method);
 				if (desc instanceof DescriptionCglib<?>) {
-					// TODO runtime dependency to cglib??? will it fail without cglib?
-					result = MonitorCglib.monitor(result, (DescriptionCglib) description, handler);
+					if (cglibAvailable) {
+						result = MonitorCglib.monitor(result, (DescriptionCglib) desc, handler);						
+					} else {
+						throw new IllegalStateException("cglib required - please make sure cglib and dependencies are on the classpath");
+					}
 				} else if (desc != null) {
 					result = monitorGeneric(result, desc, handler);					
 				}
