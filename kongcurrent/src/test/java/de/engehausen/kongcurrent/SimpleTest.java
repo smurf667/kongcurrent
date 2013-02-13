@@ -25,10 +25,9 @@ public class SimpleTest extends AbstractMonitorTest {
 	
 	/**
 	 * Test proxying a collection.
-	 * @throws Exception in case of error
 	 */
 	@Test
-	public void testProxying1() throws Exception {
+	public void testProxying1() {
 		final Collection<String> collection = new ArrayList<String>(1);
 		final String helloWorld = "hello world";
 		collection.add(helloWorld);
@@ -53,7 +52,7 @@ public class SimpleTest extends AbstractMonitorTest {
 	}
 	
 	@Test
-	public void testProxying2() throws Exception {
+	public void testProxying2() {
 		final Description<List<String>> desc = DefaultDescriptions.<String>listDescription();
 
 		final List<String> list = buildList("one", "two", null, "three");
@@ -109,7 +108,7 @@ public class SimpleTest extends AbstractMonitorTest {
 	}
 	
 	@Test
-	public void testProxying3() throws Exception {
+	public void testProxying3() {
 		final Description<Set<Integer>> desc = DefaultDescriptions.<Integer>setDescription();
 		final Set<Integer> original = new HashSet<Integer>();
 		original.add(Integer.valueOf(1));
@@ -128,10 +127,9 @@ public class SimpleTest extends AbstractMonitorTest {
 	
 	/**
 	 * Tests performance with no contention taking place.
-	 * @throws Exception in case of error
 	 */
 	@Test
-	public void testPerformance() throws Exception {
+	public void testPerformance() {
 		final Description<List<String>> desc = DefaultDescriptions.<String>listDescription();
 
 		final List<String> list = buildList("one", "two", null, "three");
@@ -141,7 +139,7 @@ public class SimpleTest extends AbstractMonitorTest {
 		final double noproxy = time(list, max);
 		final double proxy = time(monitored, max);
 		// proxy must not be 200x slower than original
-		assertTrue(proxy/noproxy < 200);
+		assertTrue("times: noproxy="+noproxy+",proxy="+proxy,proxy/noproxy < 200);
 	}
 	
 	protected double time(final List<String> list, final long max) {

@@ -28,10 +28,9 @@ public class EqualityTest extends AbstractMonitorTest {
 
 	/**
 	 * Tests equality rules on a basic demo interface.
-	 * @throws Exception in case of error
 	 */
 	@Test
-	public void testObjectEquality1() throws Exception {
+	public void testObjectEquality1() {
 		final Demo o1 = new DemoImpl(4711);
 		final Demo p1 = Monitor.monitor(o1, new Description<Demo>(Demo.class), new DefaultExceptionHandler(logger));
 
@@ -57,10 +56,9 @@ public class EqualityTest extends AbstractMonitorTest {
 	/**
 	 * Test of equality rules with objects that have special semantics
 	 * on equals (int value identical means object is equal).
-	 * @throws Exception in case of error
 	 */
 	@Test
-	public void testObjectEquality2() throws Exception {
+	public void testObjectEquality2() {
 		final Description<Demo2> desc = new Description<Demo2>(Demo2.class, Demo2Impl.COMPARATOR);
 		final Demo2 o1 = new Demo2Impl(4711);
 		final Demo2 o2 = new Demo2Impl(4711);
@@ -78,10 +76,9 @@ public class EqualityTest extends AbstractMonitorTest {
 	
 	/**
 	 * Test of equality rules of {@link List} objects.
-	 * @throws Exception in case of error
 	 */
 	@Test
-	public void testObjectEquality3() throws Exception {
+	public void testObjectEquality3() {
 		final Description<List<String>> desc = new Description<List<String>>(List.class, DefaultComparators.<String>listComparator());
 		final List<String> o1 = buildList(HELLO, WORLD);
 		final List<String> o2 = buildList(HELLO, WORLD);
@@ -97,10 +94,9 @@ public class EqualityTest extends AbstractMonitorTest {
 
 	/**
 	 * Test of equality rules of {@link Set} objects.
-	 * @throws Exception in case of error
 	 */
 	@Test
-	public void testObjectEquality4() throws Exception {
+	public void testObjectEquality4() {
 		final Description<Set<String>> desc = new Description<Set<String>>(Set.class, DefaultComparators.<String>setComparator());
 		final Set<String> o1 = buildSet(HELLO, WORLD);
 		final Set<String> o2 = buildSet(HELLO, WORLD);
@@ -172,10 +168,9 @@ public class EqualityTest extends AbstractMonitorTest {
 	 * @param p2 proxied version of <code>o2</code>
 	 * @param p3 proxied version of <code>o3</code>
 	 * @param p4 proxied version of <code>o4</code>
-	 * @throws Exception in case of error
 	 */
 	protected void fullEqualityRules(final Object o1, final Object o2, final Object o3, final Object o4,
-			                         final Object p1, final Object p2, final Object p3, final Object p4) throws Exception {
+			                         final Object p1, final Object p2, final Object p3, final Object p4) {
 		// (in-)equality
 		assertFalse(o1.equals(o4));
 		assertFalse(o2.equals(o4));
