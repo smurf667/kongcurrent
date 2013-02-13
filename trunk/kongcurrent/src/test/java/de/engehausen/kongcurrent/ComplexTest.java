@@ -13,10 +13,9 @@ public class ComplexTest extends AbstractMonitorTest {
 
 	/**
 	 * Tests handling an exception occurring under concurrent load.
-	 * @throws Exception in case of error
 	 */
 	@Test
-	public void testHandling() throws Exception {
+	public void testHandling() {
 		final Description<List<String>> desc = DefaultDescriptions.<String>listDescription();
 
 		final List<String> list = buildList("one", "two", null, "three");
@@ -34,7 +33,11 @@ public class ComplexTest extends AbstractMonitorTest {
 		}
 		int i = 0;
 		for (i = 0; i < 10; i++) {
-			Thread.sleep(500L);
+			try {
+				Thread.sleep(500L);
+			} catch (InterruptedException ie) {
+				i--;
+			}
 			// try to corrupt the internal state of the list by concurrently adding to it
 			// while other threads iterate over it
 			monitored.add(Integer.toString(i));
@@ -53,7 +56,11 @@ public class ComplexTest extends AbstractMonitorTest {
 			e.cancel();
 		}
 		for (Thread thread : threads) {
-			thread.join();
+			try {
+				thread.join();
+			} catch (InterruptedException ie) {
+				ie.printStackTrace();
+			}
 		}
 		final String log = logger.toString();
 		assertTrue(log.contains(".add(Unknown Source)"));

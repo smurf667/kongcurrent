@@ -12,7 +12,7 @@ public abstract class AbstractMonitorTest {
 	protected Recorder logger;
 
 	@Before
-	public void setup() throws Exception {
+	public void setup() {
 		logger = new Recorder();
 	}
 
