@@ -17,7 +17,7 @@ import de.engehausen.kongcurrent.Comparator;
 public class DefaultComparatorsTest {
 
 	@Test
-	public void testObjectComparator() throws Exception {
+	public void testObjectComparator() {
 		final Comparator<Object> comp = DefaultComparators.<Object>objectComparator();
 		final Object one = new Object();
 		final Object two = new Object();
@@ -28,7 +28,7 @@ public class DefaultComparatorsTest {
 	}
 	
 	@Test
-	public void testListComparator() throws Exception {
+	public void testListComparator() {
 		final Comparator<List<Integer>> comp = DefaultComparators.<Integer>listComparator();
 		final List<Integer> list1 = Arrays.asList(Integer.valueOf(1), Integer.valueOf(2));
 		final List<Integer> list2 = Arrays.asList(Integer.valueOf(1), Integer.valueOf(2));
@@ -44,7 +44,7 @@ public class DefaultComparatorsTest {
 	}
 
 	@Test
-	public void testSetComparator() throws Exception {
+	public void testSetComparator() {
 		final Comparator<Set<Integer>> comp = DefaultComparators.<Integer>setComparator();
 		final Set<Integer> list1 = new HashSet<Integer>(Arrays.asList(Integer.valueOf(1), Integer.valueOf(2)));
 		final Set<Integer> list2 = new HashSet<Integer>(Arrays.asList(Integer.valueOf(1), Integer.valueOf(2)));
@@ -60,7 +60,7 @@ public class DefaultComparatorsTest {
 	}
 	
 	@Test
-	public void testMapComparator() throws Exception {
+	public void testMapComparator() {
 		final Comparator<Map<Integer, Integer>> comp = DefaultComparators.<Integer, Integer>mapComparator();
 		final Map<Integer, Integer> map1 = createIntMap(0, 2, 4);
 		final Map<Integer, Integer> map2 = createIntMap(0, 2, 4);

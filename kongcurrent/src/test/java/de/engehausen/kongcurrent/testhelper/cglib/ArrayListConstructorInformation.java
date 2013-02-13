@@ -23,4 +23,19 @@ public class ArrayListConstructorInformation extends ConstructorInformation {
 		return new Object[] { orig };
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof ArrayListConstructorInformation) {
+			final ArrayListConstructorInformation info = (ArrayListConstructorInformation) obj;
+			return orig.equals(info.orig);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		return orig.hashCode();
+	}
+
 }

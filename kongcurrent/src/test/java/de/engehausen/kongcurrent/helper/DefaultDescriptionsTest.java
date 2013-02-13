@@ -33,27 +33,27 @@ public class DefaultDescriptionsTest {
 	protected Set<Description<?>> alreadyHandled;
 
 	@Before
-	public void setup() throws Exception {
+	public void setup() {
 		alreadyHandled = new HashSet<Description<?>>();
 	}
 
 	@Test
-	public void testCollection() throws Exception {
+	public void testCollection() {
 		verifyInterfacesCovered(DefaultDescriptions.collectionDescription(), alreadyHandled);
 	}
 
 	@Test
-	public void testList() throws Exception {
+	public void testList() {
 		verifyInterfacesCovered(DefaultDescriptions.listDescription(), alreadyHandled);
 	}
 
 	@Test
-	public void testSet() throws Exception {
+	public void testSet() {
 		verifyInterfacesCovered(DefaultDescriptions.setDescription(), alreadyHandled);
 	}
 
 	@Test
-	public void testMap() throws Exception {
+	public void testMap() {
 		assertNotNull(DefaultDescriptions.mapDescription()); // cover a specific code path in the default descriptions
 		verifyInterfacesCovered(DefaultDescriptions.mapDescription(), alreadyHandled);
 	}
