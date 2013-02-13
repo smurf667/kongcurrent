@@ -9,7 +9,7 @@ import org.junit.Test;
 public class DefaultLoggerTest {
 	
 	@Test
-	public void testDefaultLogger() throws Exception {
+	public void testDefaultLogger() {
 		final DefaultLogger logger1 = new DefaultLogger();
 		logger1.log("test123"); // must work
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream(32);

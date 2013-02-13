@@ -6,6 +6,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
+import junit.framework.Assert;
 
 import org.junit.Test;
 
@@ -63,6 +67,14 @@ public class SimpleTest extends AbstractMonitorTest {
 		} catch (IllegalStateException e) {
 			assertTrue(logger.toString().indexOf("java.lang.Exception: caller...") > 100);
 		}
+	}
+	
+	@Test
+	public void testPlainDescription() {
+		final DescriptionCglib<Iterator<String>> desc = new DescriptionCglib<Iterator<String>>(Iterator.class);
+		final Iterator<String> monitored = MonitorCglib.monitor(Collections.singleton("hello").iterator(), desc, new DefaultExceptionHandler(logger));
+		Assert.assertEquals("hello", monitored.next());
+		Assert.assertFalse(monitored.hasNext());
 	}
 
 }
