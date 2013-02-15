@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="javadoc">
-    <target name="javadoc">
-        <javadoc access="public" author="false" classpath="D:\eclipse\plugins\org.junit4_4.5.0.v20090824\junit.jar;D:\eclipse\plugins\org.hamcrest.core_1.1.0.v20090501071000.jar" destdir="doc" doctitle="KongCurrent" nodeprecated="false" nodeprecatedlist="false" noindex="true" nonavbar="false" notree="true" source="1.6" sourcepath="src" splitindex="false" use="true" version="false">
-            <link href="http://www.junit.org/junit/javadoc/4.5"/>
-            <link href="http://java.sun.com/javase/6/docs/api/"/>
-        </javadoc>
-    </target>
-</project>
