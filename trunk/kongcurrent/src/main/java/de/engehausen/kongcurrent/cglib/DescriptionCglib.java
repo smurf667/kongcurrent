@@ -4,19 +4,18 @@ import de.engehausen.kongcurrent.Description;
 import de.engehausen.kongcurrent.Monitor;
 
 /**
- * Description of a class to monitor. This extends the
- * {@link Description} used for interfaces and can be
- * used with classes that will be proxied (actually subclassed) using
- * <a href="http://cglib.sourceforge.net/">cglib</a>.
+ * Description of a <i>class<i> to monitor. This extends the
+ * {@link Description} used for <i>interfaces</i> and can be
+ * used with classes that will be proxied (actually subclassed) using cglib.
  * Additionally the description provides further descriptions
  * for methods returning objects that somehow depend on the
  * original instance.
  * 
- * @param <T> the type of interface the description describes
+ * @param <T> the type of class the description describes
  */
 public class DescriptionCglib<T> extends Description<T> {
 
-	protected final ConstructorInformation ctorInfo;
+	protected final ConstructorInformation<T> ctorInfo;
 
 	/**
 	 * Creates a description for the given class. The class is expected
@@ -32,7 +31,7 @@ public class DescriptionCglib<T> extends Description<T> {
 	 * @param aClass the class to describe, must not be <code>null</code>
 	 * @param aConstructorInfo the constructor information to create proxies; may only be <code>null</code> if a no-arg constructor exists for <code>aClass</code>
 	 */
-	public DescriptionCglib(final Class<?> aClass, final ConstructorInformation aConstructorInfo) {
+	public DescriptionCglib(final Class<?> aClass, final ConstructorInformation<T> aConstructorInfo) {
 		super(aClass, null);
 		ctorInfo = aConstructorInfo;
 	}
@@ -58,7 +57,7 @@ public class DescriptionCglib<T> extends Description<T> {
 	 * Returns information on the constructor of an object to proxy.
 	 * @return information on the constructor of an object to proxy.
 	 */
-	public ConstructorInformation getConstructorInformation() {
+	public ConstructorInformation<T> getConstructorInformation() {
 		return ctorInfo;
 	}
 

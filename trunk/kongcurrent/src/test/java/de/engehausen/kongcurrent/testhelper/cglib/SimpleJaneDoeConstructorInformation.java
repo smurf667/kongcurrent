@@ -5,7 +5,7 @@ package de.engehausen.kongcurrent.testhelper.cglib;
 
 import de.engehausen.kongcurrent.cglib.ConstructorInformation;
 
-public class SimpleJaneDoeConstructorInformation extends ConstructorInformation {		
+public class SimpleJaneDoeConstructorInformation extends ConstructorInformation<JaneDoe> {		
 	private static final Class<?>[] signature = new Class<?>[] { int.class };
 	private final JaneDoe orig;
 	public SimpleJaneDoeConstructorInformation(final JaneDoe o) {
