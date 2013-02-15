@@ -5,7 +5,7 @@
 	<groupId>de.engehausen</groupId>
 	<artifactId>kongcurrent</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>kongcurrent</name>
 	<url>http://code.google.com/p/kongcurrent/</url>
 	<description>This project provides an easy-to use helper to assist debugging issues which cause exceptions under concurrent access.</description>
