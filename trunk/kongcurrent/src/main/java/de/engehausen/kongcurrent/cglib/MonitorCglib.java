@@ -23,7 +23,7 @@ import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
  * that use arguments need to be described using the {@link ConstructorInformation} in
  * {@link DescriptionCglib}.
  * <p>Here is a simple example code snippet that will be adapted to use the monitor:
- * <pre>MyClass myImpl = new MyClass(4);
+ * <pre>MyClass myImpl = new MyClass("default");
  *processing(myList);</pre>
  * Now you want to know what happens to the object when it is used in the
  * <code>processing(MyClass)</code> method. Instead of the
