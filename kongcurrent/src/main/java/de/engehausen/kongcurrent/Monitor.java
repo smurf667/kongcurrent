@@ -20,7 +20,7 @@ import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
  * Helper to monitor parallel method invocations for exceptions.
  * <p><img src="doc-files/Monitor-1.png">
  * <p>The monitor creates a proxied version of an object implementing some
- * interface; the proxy can track invocations of the objects' methods and
+ * interface (for <i>classes:</i> <a href="#cglib">see below</a>); the proxy can track invocations of the objects' methods and
  * can report on potential concurrent access on the object. This can be
  * used to help find out code paths that concurrently access the object
  * (through the interface methods).
@@ -79,6 +79,8 @@ import de.engehausen.kongcurrent.helper.DefaultExceptionHandler;
  * appropriate {@link Comparator}. For the Java collection objects default
  * descriptions and comparators exist (see {@link DefaultDescriptions} and
  * {@link DefaultComparators}).
+ * <p><a name="cglib">To monitor non-interface based instances have a look at
+ * the experimental {@link MonitorCglib}.</a>
  */
 public class Monitor {
 	
