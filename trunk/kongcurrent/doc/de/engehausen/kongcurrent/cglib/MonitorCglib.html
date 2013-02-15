@@ -114,7 +114,7 @@ Experimental helper to monitor parallel method invocations for exceptions on
  that use arguments need to be described using the <A HREF="../../../../de/engehausen/kongcurrent/cglib/ConstructorInformation.html" title="class in de.engehausen.kongcurrent.cglib"><CODE>ConstructorInformation</CODE></A> in
  <A HREF="../../../../de/engehausen/kongcurrent/cglib/DescriptionCglib.html" title="class in de.engehausen.kongcurrent.cglib"><CODE>DescriptionCglib</CODE></A>.
  <p>Here is a simple example code snippet that will be adapted to use the monitor:
- <pre>MyClass myImpl = new MyClass(4);
+ <pre>MyClass myImpl = new MyClass("default");
 processing(myList);</pre>
  Now you want to know what happens to the object when it is used in the
  <code>processing(MyClass)</code> method. Instead of the
