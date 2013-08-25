@@ -1,6 +1,6 @@
 /**
  * A helper to monitor objects for (concurrent) access paths.
- * This package provides a small helper which allows monitoring an object
+ * This package provides a small helper, {@link Monitor}, which allows monitoring an object
  * implementing a specific interface. The goal is to record the stack traces
  * of callers to the object in order to handle cases in which exceptions
  * are cause by concurrent access.
